@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
-import { Layout, Breadcrumb } from 'antd';
+import { Layout } from 'antd';
+import {
+  MenuUnfoldOutlined,
+  MenuFoldOutlined,
+} from '@ant-design/icons';
 
-import { Navbar, Sidebar } from '../components';
+
+import { Sidebar } from '../components';
 
 const { Header, Sider, Content, Footer } = Layout;
 
@@ -12,32 +17,35 @@ class DashboardLayout extends Component
     super(props);
     this.state = {
       year: new Date().getFullYear(),
+      collapsed: false,
     }
   }
+
+  toggle = () => {
+    this.setState({
+      collapsed: !this.state.collapsed,
+    });
+  };
 
   render() {
     return (
       <Layout style={{ minHeight: '100vh' }}>
-        <Header>
+        <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
           <div className="logo">Bushline Leads</div>
-          <Navbar/>
-        </Header>
+          <Sidebar/>
+        </Sider>
         <Layout>
-          <Sider width={200} className="site-layout-background">
-            <Sidebar/>
-          </Sider>
-          <Layout style={{ padding: '0 24px 24px' }}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>Home</Breadcrumb.Item>
-              <Breadcrumb.Item>List</Breadcrumb.Item>
-              <Breadcrumb.Item>App</Breadcrumb.Item>
-            </Breadcrumb>
-            <Content className="site-layout-background">
-              {this.props.children}
-            </Content>
-          </Layout>
+          <Header style={{ background: '#fff' }}>
+          {React.createElement(this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+              className: 'trigger',
+              onClick: this.toggle,
+            })}
+          </Header>
+          <Content className="hero">
+            {this.props.children}
+          </Content>
+          <Footer style={{ textAlign: 'center' }}>Bushline Leads ©{this.state.year} Created by Kisokolab</Footer>
         </Layout>
-        <Footer style={{ textAlign: 'center' }}>Bushline Leads ©{this.state.year} Created by Kisokolab</Footer>
       </Layout>
     )
   }

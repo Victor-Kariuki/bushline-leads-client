@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import 'antd/dist/antd.css';
+import 'draft-js/dist/Draft.css';
+
 import './index.css';
 
 import App from './App';

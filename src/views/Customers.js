@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { DashboardLayout } from '../layouts';
 
-class Users extends Component
+class Customers extends Component
 {
   constructor(props) {
     super(props);
@@ -16,4 +16,4 @@ class Users extends Component
   }
 }
 
-export default Users;
+export default Customers;

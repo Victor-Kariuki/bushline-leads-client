@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { DashboardLayout } from '../layouts';
 
-class Dashboard extends Component
+class Leads extends Component
 {
   constructor(props) {
     super(props);
@@ -10,10 +10,10 @@ class Dashboard extends Component
   }
 
   render() {
-    return(
+    return (
       <DashboardLayout></DashboardLayout>
     )
   }
 }
 
-export default Dashboard;
+export default Leads;
